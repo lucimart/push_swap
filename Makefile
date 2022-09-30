@@ -6,7 +6,7 @@
 #    By: lucimart <lucimart@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/24 23:50:14 by lucimart          #+#    #+#              #
-#    Updated: 2022/09/21 14:12:53 by lucimart         ###   ########.fr        #
+#    Updated: 2022/09/30 16:55:08 by lucimart         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,9 +34,9 @@ RMDIR = /bin/rmdir
 # ifdef does not expand variable references; it just sees if something is defined at all
 # You can text replace at the end of each space seperated word using $(var:a=b)
 ifdef WITH_BONUS
-	OBJ = $(REG_SRCS:$S%.c=$O%.o) $(BONUS_SRCS:%.c=$O%.o)
+	OBJ = $(REG_SRCS:$S%=$O%.o) $(BONUS_SRCS:%=$O%.o)
 else
-	OBJ = $(REG_SRCS:$S%.c=$O%.o)
+	OBJ = $(REG_SRCS:$S%=$O%.o)
 endif
 
 # The all rule itself has no special meaning.
@@ -45,29 +45,29 @@ all: $(NAME)
 
 $(NAME): $(OBJ) $(LIBFT)
 	@echo "\033[33m[Compiling push_swap...]"
-	@$(CC) -g -o $@ $^ $(HEADERS_DIR)
+	@$(CC) $(CFLAGS) -o $@ $^
 
 $(LIBFT):
 	@echo "\033[33m[Compiling Libft...]"
 	@$(MAKE) -s bonus -C $(LIBFT_DIR)
 
+# The @ at the beginning of the line prevents make
+# from displaying the line before executing it
 $O:
-    @mkdir -p $@
-    # The @ at the beginning of the line prevents make
-    # from displaying the line before executing it
+	@mkdir -p $@
 
 $(OBJ): | $O
 
 # If the object file doesn’t exist or if the source file is newer
 # than the object file, the contents of the rule will be executed.
 $O%.o: $S%
-	@$(CC) -c $(CFLAGS) -O0 $< -o $@
+	$(CC) -c $(CFLAGS) -O0 $< -o $@
 
 cleanobj:
-    @$(RM) $(wildcard $(OBJ))
+	@$(RM) $(wildcard $(OBJ))
 
 cleanobjdir: cleanobj
-    @$(RMDIR) $O
+	@$(RMDIR) $O
 
 cleanlibft:
 	@$(MAKE) -s clean -C $(LIBFT_DIR)
