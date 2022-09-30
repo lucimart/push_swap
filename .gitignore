@@ -1,0 +1,6 @@
+# Object files and it's dir
+obj/
+*.o
+
+# Program name
+push_swap
