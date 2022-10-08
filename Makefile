@@ -6,7 +6,7 @@
 #    By: lucimart <lucimart@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/24 23:50:14 by lucimart          #+#    #+#              #
-#    Updated: 2022/09/30 16:55:08 by lucimart         ###   ########.fr        #
+#    Updated: 2022/10/08 21:53:38 by lucimart         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,12 +21,13 @@ CC =			gcc
 S =				./src/
 I = 			./inc/
 O =				./obj/
-# CFLAGS =		-g
-CFLAGS +=		-g -Wall -Werror -Wextra -I$I
+CFLAGS =		-g
+# CFLAGS +=		-g -Wall -Werror -Wextra -I$I
 LIBFT_DIR =		./libft/
 LIBFT =			$(LIBFT_DIR)libft.a
 REG_SRCS =		$Smain.c \
-				$Sutils.c
+				$Sutils.c \
+				$Sparse.c
 BONUS_SRCS =
 RM = /bin/rm -f
 RMDIR = /bin/rmdir

@@ -19,4 +19,7 @@
     "[c]": {
         "editor.defaultFormatter": "keyhr.42-c-format"
     },
+    "files.associations": {
+        "libft.h": "c"
+    },
 }
