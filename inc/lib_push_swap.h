@@ -6,7 +6,7 @@
 /*   By: lucimart <lucimart@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 14:13:42 by lucimart          #+#    #+#             */
-/*   Updated: 2022/10/08 21:48:19 by lucimart         ###   ########.fr       */
+/*   Updated: 2022/10/09 15:25:35 by lucimart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,27 @@
 
 # include "../libft/libft.h"
 
+typedef struct s_stack
+{
+	int	*arr;
+	int	len;
+	int	cnt;
+}		t_stack;
+
 void	error(void);
-void	parse(char **argv, int **stack_a, int **stack_b);
+void	parse(char **argv, t_stack *stack_a_ptr, t_stack *stack_b_ptr);
+void	swap_a(int **arr_ptr, int len);
+void	swap_b(int **arr_ptr, int len);
+void	swap_s(int **arr_ptr_a, int len_a, int **arr_ptr_b, int len_b);
+int		shift_r(t_stack *stack_ptr);
+int		shift_l(t_stack *stack_ptr);
+void	push_a(t_stack *stack_a_ptr, t_stack *stack_b_ptr);
+void	push_b(t_stack *stack_a_ptr, t_stack *stack_b_ptr);
+void	rotate_a(t_stack *stack_a_ptr);
+void	rotate_b(t_stack *stack_b_ptr);
+void	rotate_r(t_stack *stack_a_ptr, t_stack *stack_b_ptr);
+void	reverse_rotate_a(t_stack *stack_a_ptr);
+void	reverse_rotate_b(t_stack *stack_b_ptr);
+void	reverse_rotate_r(t_stack *stack_a_ptr, t_stack *stack_b_ptr);
+
 #endif

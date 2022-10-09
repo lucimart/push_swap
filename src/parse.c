@@ -6,7 +6,7 @@
 /*   By: lucimart <lucimart@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 21:46:37 by lucimart          #+#    #+#             */
-/*   Updated: 2022/10/08 21:51:36 by lucimart         ###   ########.fr       */
+/*   Updated: 2022/10/09 16:25:24 by lucimart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 * Join all the argv, split them by ' ', alloc space for stacks,
 * convert the split arr to int arr and confirm there are no dups
 */
-void	parse(char **argv, int **stack_a, int **stack_b)
+void	parse(char **argv, t_stack *stack_a, t_stack *stack_b)
 {
 	char	*tmp;
 	char	**args;
@@ -26,12 +26,15 @@ void	parse(char **argv, int **stack_a, int **stack_b)
 	args = ft_split(tmp, ' ');
 	free(tmp);
 	args_len = double_pointer_len((void **)args);
-	*stack_a = (int *)malloc(sizeof(int) * args_len);
-	*stack_b = (int *)malloc(sizeof(int) * args_len);
-	if (!stack_a || !stack_b)
+	if (!str_arr_to_int_arr(args, args_len, &(stack_a->arr)))
 		error();
-	if (!str_arr_to_int_arr(args, args_len, stack_a))
+	stack_b->arr = (int *)malloc(sizeof(int) * args_len);
+	if (!stack_b->arr)
 		error();
-	if (has_duplicated_int(*stack_a, args_len))
+	if (has_duplicated_int(stack_a->arr, args_len))
 		error();
+	stack_a->len = args_len;
+	stack_b->len = args_len;
+	stack_a->cnt = args_len;
+	stack_b->cnt = 0;
 }

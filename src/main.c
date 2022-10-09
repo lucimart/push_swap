@@ -6,7 +6,7 @@
 /*   By: lucimart <lucimart@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 13:38:57 by lucimart          #+#    #+#             */
-/*   Updated: 2022/10/08 21:49:04 by lucimart         ###   ########.fr       */
+/*   Updated: 2022/10/09 16:30:13 by lucimart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,16 @@
 
 int	main(int argc, char **argv)
 {
-	int	i;
-	int	*stack_a;
-	int	*stack_b;
+	int		i;
+	t_stack	stack_a;
+	t_stack	stack_b;
 
 	if (argc < 2)
 		return (0);
 	parse(argv, &stack_a, &stack_b);
-	free(stack_a);
-	free(stack_b);
+	if (!is_sorted(stack_a.arr, stack_a.cnt))
+		ft_putstr("Success!\n");
+	free(stack_a.arr);
+	free(stack_b.arr);
 	return (0);
 }
