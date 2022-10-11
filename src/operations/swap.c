@@ -6,7 +6,7 @@
 /*   By: lucimart <lucimart@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 13:41:41 by lucimart          #+#    #+#             */
-/*   Updated: 2022/10/11 21:18:09 by lucimart         ###   ########.fr       */
+/*   Updated: 2022/10/12 00:15:03 by lucimart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,30 +27,30 @@ static void	swap(int **arr_ptr)
 	arr[1] = tmp;
 }
 
-void	swap_a(int **arr_ptr, int len)
+void	swap_a(t_stack *stack)
 {
-	if (len < 2)
+	if (stack->cnt < 2)
 		return ;
-	swap(arr_ptr);
+	swap(&stack->arr);
 	ft_putstr("sa\n");
 }
 
-void	swap_b(int **arr_ptr, int len)
+void	swap_b(t_stack *stack)
 {
-	if (len < 2)
+	if (stack->cnt < 2)
 		return ;
-	swap(arr_ptr);
+	swap(&stack->arr);
 	ft_putstr("sb\n");
 }
 
 /*
 * Swap 2 arrs at the same time
 */
-void	swap_s(int **arr_ptr_a, int len_a, int **arr_ptr_b, int len_b)
+void	swap_s(t_stack *stack_a, t_stack *stack_b)
 {
-	if (len_a < 2 || len_b < 2)
+	if (stack_a->cnt < 2 || stack_b->cnt < 2)
 		return ;
-	swap(arr_ptr_a);
-	swap(arr_ptr_b);
+	swap(&stack_a->arr);
+	swap(&stack_b->arr);
 	ft_putstr("ss\n");
 }
