@@ -6,7 +6,7 @@
 /*   By: lucimart <lucimart@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 19:08:56 by lucimart          #+#    #+#             */
-/*   Updated: 2022/10/08 19:08:58 by lucimart         ###   ########.fr       */
+/*   Updated: 2022/10/12 00:06:20 by lucimart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,25 @@
 
 void	error(void)
 {
-	write(STDERR_FILENO, "Error\n", 7);
+	ft_putstr_fd("Error\n", STDERR_FILENO);
 	exit(EXIT_FAILURE);
+}
+
+/*
+* return the amount of bits in a number
+* TODO test how it works for negative integers
+*/
+int	bits_in(int nbr)
+{
+	int	bits;
+
+	bits = 0;
+	while ((nbr >> bits) != 0)
+		bits++;
+	return (bits);
+}
+
+int	bit_at_ith_is_1(int nbr, int i)
+{
+	return (((nbr >> i) & 1) == 1);
 }

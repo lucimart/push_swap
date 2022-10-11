@@ -6,7 +6,7 @@
 #    By: lucimart <lucimart@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/24 23:50:14 by lucimart          #+#    #+#              #
-#    Updated: 2022/10/11 21:16:46 by lucimart         ###   ########.fr        #
+#    Updated: 2022/10/11 23:36:31 by lucimart         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -75,6 +75,7 @@ cleanobj:
 	@$(RM) $(wildcard $(OBJ))
 
 cleanobjdir: cleanobj
+	@$(RMDIR) $O/operations
 	@$(RMDIR) $O
 
 cleanlibft:

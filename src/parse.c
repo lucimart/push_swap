@@ -6,7 +6,7 @@
 /*   By: lucimart <lucimart@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 21:46:37 by lucimart          #+#    #+#             */
-/*   Updated: 2022/10/11 22:11:25 by lucimart         ###   ########.fr       */
+/*   Updated: 2022/10/12 01:39:47 by lucimart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,18 +50,31 @@ void	index_arr(int *arr, int len, int **index_arr_ptr)
 	}
 }
 
-void	init_stack(t_stack *stack_a, t_stack *stack_b, int *arr, int len)
+int	init_stack(t_stack *stack_a, t_stack *stack_b, int *arr, int len)
 {
 	stack_a->arr = (int *)malloc(sizeof(int) * len);
+	if (!stack_a->arr)
+		return (0);
 	stack_b->arr = (int *)malloc(sizeof(int) * len);
-	if (!stack_b->arr || !stack_a->arr)
-		error();
+	if (!stack_b->arr)
+	{
+		free(stack_a->arr);
+		return (0);
+	}
 	stack_a->len = len;
 	stack_b->len = len;
 	stack_a->cnt = len;
 	stack_b->cnt = 0;
 	index_arr(arr, len, &(stack_a->arr));
 	fill_int_arr(&stack_b->arr, stack_b->len, 0);
+	return (1);
+}
+
+void	free_and_error(int *tmp, char **args)
+{
+	free(tmp);
+	free_str_arr(args);
+	error();
 }
 
 /*
@@ -77,10 +90,11 @@ void	parse(char **argv, t_stack *stack_a, t_stack *stack_b)
 	args = join_and_split(argv);
 	args_len = double_pointer_len((void **)args);
 	if (!str_arr_to_int_arr(args, args_len, &tmp))
-		error();
+		free_and_error(tmp, args);
 	if (has_duplicated_int(tmp, args_len))
-		error();
-	init_stack(stack_a, stack_b, tmp, args_len);
+		free_and_error(tmp, args);
+	if (!init_stack(stack_a, stack_b, tmp, args_len))
+		free_and_error(tmp, args);
 	free(tmp);
 	free_str_arr(args);
 }
