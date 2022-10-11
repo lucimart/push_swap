@@ -6,7 +6,7 @@
 #    By: lucimart <lucimart@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/24 23:50:14 by lucimart          #+#    #+#              #
-#    Updated: 2022/10/08 21:53:38 by lucimart         ###   ########.fr        #
+#    Updated: 2022/10/11 21:16:46 by lucimart         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,13 @@ LIBFT_DIR =		./libft/
 LIBFT =			$(LIBFT_DIR)libft.a
 REG_SRCS =		$Smain.c \
 				$Sutils.c \
-				$Sparse.c
+				$Sparse.c \
+				$Ssort.c \
+				$Soperations/push.c \
+				$Soperations/reverse_rotate.c \
+				$Soperations/rotate.c \
+				$Soperations/swap.c \
+				$Soperations/utils.c
 BONUS_SRCS =
 RM = /bin/rm -f
 RMDIR = /bin/rmdir
@@ -56,6 +62,7 @@ $(LIBFT):
 # from displaying the line before executing it
 $O:
 	@mkdir -p $@
+	@mkdir -p $@/operations
 
 $(OBJ): | $O
 

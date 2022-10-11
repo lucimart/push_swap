@@ -6,11 +6,11 @@
 /*   By: lucimart <lucimart@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 13:41:41 by lucimart          #+#    #+#             */
-/*   Updated: 2022/10/09 14:02:57 by lucimart         ###   ########.fr       */
+/*   Updated: 2022/10/11 21:18:09 by lucimart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/lib_push_swap.h";
+#include "../../inc/lib_push_swap.h"
 
 /*
 * Given a ptr to an int arr with at least length 2,

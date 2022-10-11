@@ -6,7 +6,7 @@
 /*   By: lucimart <lucimart@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 14:13:42 by lucimart          #+#    #+#             */
-/*   Updated: 2022/10/09 15:25:35 by lucimart         ###   ########.fr       */
+/*   Updated: 2022/10/11 21:09:17 by lucimart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ typedef struct s_stack
 }		t_stack;
 
 void	error(void);
+void	sort(t_stack *stack_a, t_stack *stack_b);
 void	parse(char **argv, t_stack *stack_a_ptr, t_stack *stack_b_ptr);
 void	swap_a(int **arr_ptr, int len);
 void	swap_b(int **arr_ptr, int len);
