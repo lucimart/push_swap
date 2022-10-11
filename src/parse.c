@@ -6,7 +6,7 @@
 /*   By: lucimart <lucimart@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 21:46:37 by lucimart          #+#    #+#             */
-/*   Updated: 2022/10/09 20:41:55 by lucimart         ###   ########.fr       */
+/*   Updated: 2022/10/11 22:11:25 by lucimart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ void	init_stack(t_stack *stack_a, t_stack *stack_b, int *arr, int len)
 	stack_a->cnt = len;
 	stack_b->cnt = 0;
 	index_arr(arr, len, &(stack_a->arr));
+	fill_int_arr(&stack_b->arr, stack_b->len, 0);
 }
 
 /*
